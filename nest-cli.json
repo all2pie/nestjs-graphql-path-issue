@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/nest-workspace-path-bug/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/nest-workspace-path-bug/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/nest-workspace-path-bug",
+  "projects": {
+    "nest-workspace-path-bug": {
+      "type": "application",
+      "root": "apps/nest-workspace-path-bug",
+      "entryFile": "main",
+      "sourceRoot": "apps/nest-workspace-path-bug/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nest-workspace-path-bug/tsconfig.app.json"
+      }
+    },
+    "cat": {
+      "type": "application",
+      "root": "apps/cat",
+      "entryFile": "main",
+      "sourceRoot": "apps/cat/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/cat/tsconfig.app.json",
+        "plugins": [
+          {
+            "name": "@nestjs/graphql",
+            "options": {
+              "introspectComments": true,
+              "typeFileNameSuffix": [
+                ".input.ts",
+                ".args.ts",
+                ".entity.ts",
+                ".model.ts",
+                ".interface.ts",
+                ".enum.ts",
+                ".output.ts"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
